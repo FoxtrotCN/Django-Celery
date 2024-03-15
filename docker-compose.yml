@@ -21,3 +21,15 @@ services:
     image: redis:7.0.11-alpine
     depends_on:
       - django
+
+
+  celery:
+    container_name: celery
+    build:
+      context: ./django_celery
+    volumes:
+      - ./django_celery:/usr/src/app/
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q
+      - ALLOWED_HOSTS=localhost,127.0.0.1
